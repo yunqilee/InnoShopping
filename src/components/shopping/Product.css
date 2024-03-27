@@ -1,13 +1,9 @@
 .product {
-    margin-top: 50px;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
 }
 
-.product img {
-    width: 105px;
-    height: 105px;
-    object-fit: cover;
-    margin-right: 20px;
-}
 .product .details {
     width: 100%;
 }
@@ -16,4 +12,29 @@
 }
 .product .details p {
     margin: 10px 0;
+}
+
+.product h3 {
+    margin-top: 0;
+    color: #333;
+    font-size: 20px;
+}
+
+.product img {
+    width: 105px;
+    height: 105px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.product p {
+    color: #666;
+    line-height: 1.5;
+    font-size: 14px;
+}
+
+.product p:last-child {
+    color: #e53e3e;
+    font-weight: bold;
+    margin-top: 10px;
 }
