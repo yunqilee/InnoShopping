@@ -9,6 +9,7 @@ export const Product = () => {
             .then(data => setProducts(data.products))
             .catch(error => console.error('Error fetching data: ', error));
     }, []);
+
     return (
         <div className="products">
             <div className="container grid3">
