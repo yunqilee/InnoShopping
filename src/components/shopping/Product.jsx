@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import "./Product.css"
 export const Product = () => {
 
     const [products, setProducts] = useState([])
@@ -11,7 +12,7 @@ export const Product = () => {
     }, []);
 
     return (
-        <div className="products">
+        <div className="product">
             <div className="container grid3">
                 {products.map(product => (
                     <div key={product.id}>
