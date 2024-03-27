@@ -19,7 +19,10 @@ export const Product = () => {
                         <h3>{product.title}</h3>
                         <img src={product.thumbnail} alt={product.title} style={{width: '100px', height: '100px'}}/>
                         <p>{product.description}</p>
-                        <p>Price: ${product.price}</p>
+                        <p className="product-price">Price: ${product.price}</p>
+                        <button className="addToCartBtn">
+                            Add to Cart
+                        </button>
                     </div>
                 ))}
             </div>
