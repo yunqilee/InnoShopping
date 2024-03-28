@@ -1,8 +1,10 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
+import {ShopContext} from "../context/shop-context";
 import "./Product.css"
 export const Product = () => {
 
     const [products, setProducts] = useState([])
+    const {cartItems, addToCart} = useContext(ShopContext)
 
     useEffect(() => {
         fetch('https://dummyjson.com/products')
@@ -20,7 +22,7 @@ export const Product = () => {
                         <img src={product.thumbnail} alt={product.title} style={{width: '100px', height: '100px'}}/>
                         <p>{product.description}</p>
                         <p className="product-price">Price: ${product.price}</p>
-                        <button className="addToCartBtn">
+                        <button className="addToCartBtn" onClick={() => addToCart(product.id)}>
                             Add to Cart
                         </button>
                     </div>
