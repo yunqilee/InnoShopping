@@ -6,7 +6,9 @@ import "./navbar.css"
 
 export const Navbar = () => {
     return <div className="navbar">
-        <h1 className="logo">InnoShopping</h1>
+        <Link to={"/"} className="logo-link">
+            <h1 className="logo">InnoShopping</h1>
+        </Link>
         <div className="links">
             <Link to={"/"}>
                 <ShoppingBag size={24} />
