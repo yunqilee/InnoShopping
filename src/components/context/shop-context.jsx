@@ -18,7 +18,6 @@ const getDefaultCart = async () => {
 };
 export const ShopContextProvider = (props) => {
     const [cartItems, setCartItems] = useState({});
-    const [showWarning, setShowWarning] = useState(false);
 
     useEffect(() => {
         const initializeCart = async () => {
@@ -29,32 +28,24 @@ export const ShopContextProvider = (props) => {
         initializeCart();
     }, []);
 
-    useEffect(() => {
-        let timer;
-        if (showWarning) {
-            timer = setTimeout(() => setShowWarning(false), 1500)
-        }
-
-        return () => clearTimeout(timer)
-    }, [showWarning]);
     const addToCart = (itemId) => {
-        setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
+        setCartItems((prev) => ({ ...prev, [itemId]: Number(prev[itemId]) + 1 }));
     };
 
     const removeFromCart = (itemId) => {
-        setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
+        setCartItems((prev) => ({ ...prev, [itemId]: Number(prev[itemId]) - 1 }));
     };
 
     const updateCartItemCount = (newAmount, itemId) => {
-        if (newAmount > 0) {
+        if (newAmount === '' || newAmount === 0) {
             setCartItems((prev) => ({ ...prev, [itemId]: newAmount }));
-            setShowWarning(false);
+        } else if (newAmount > 0) {
+            setCartItems((prev) => ({ ...prev, [itemId]: newAmount }));
         } else {
             setCartItems(prevItems => ({
                 ...prevItems,
                 [itemId]: 1
             }));
-            setShowWarning(true);
         }
     };
 
