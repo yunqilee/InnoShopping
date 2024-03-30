@@ -18,6 +18,7 @@
 
 .cartItem img {
     width: 200px;
+    height: 80%;
 }
 
 .cartItem .description {
@@ -30,4 +31,35 @@
     color: #e53e3e;
     font-weight: bold;
     margin-top: 10px;
+}
+
+.countHandler {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-right: 20px;
+    max-width: 120px;
+    background-color: #f2f2f2;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.countHandler button {
+    background-color: #e9ecef;
+    border: none;
+    color: #333;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.countHandler input {
+    width: 40px;
+    text-align: center;
+    font-weight: bolder;
 }
