@@ -17,7 +17,8 @@ const getDefaultCart = async () => {
     }
 };
 export const ShopContextProvider = (props) => {
-    const [cartItems, setCartItems] = useState({})
+    const [cartItems, setCartItems] = useState({});
+    const [showWarning, setShowWarning] = useState(false);
 
     useEffect(() => {
         const initializeCart = async () => {
@@ -27,6 +28,15 @@ export const ShopContextProvider = (props) => {
 
         initializeCart();
     }, []);
+
+    useEffect(() => {
+        let timer;
+        if (showWarning) {
+            timer = setTimeout(() => setShowWarning(false), 1500)
+        }
+
+        return () => clearTimeout(timer)
+    }, [showWarning]);
     const addToCart = (itemId) => {
         setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
     };
@@ -36,7 +46,16 @@ export const ShopContextProvider = (props) => {
     };
 
     const updateCartItemCount = (newAmount, itemId) => {
-        setCartItems((prev) => ({ ...prev, [itemId]: newAmount }));
+        if (newAmount > 0) {
+            setCartItems((prev) => ({ ...prev, [itemId]: newAmount }));
+            setShowWarning(false);
+        } else {
+            setCartItems(prevItems => ({
+                ...prevItems,
+                [itemId]: 1
+            }));
+            setShowWarning(true);
+        }
     };
 
     const contextValue = {cartItems, addToCart, removeFromCart, updateCartItemCount}
