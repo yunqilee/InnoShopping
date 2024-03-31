@@ -6,7 +6,8 @@ import "./cart.css"
 
 export const Cart = () => {
     const [products, setProducts] = useState([])
-    const {cartItems} = useContext(ShopContext);
+    const {cartItems, getTotalCartAmount} = useContext(ShopContext);
+    const totalAmount = getTotalCartAmount();
 
     useEffect(() => {
         fetch('https://dummyjson.com/products')
@@ -26,6 +27,9 @@ export const Cart = () => {
                         return <CartItem data={product} />
                     }
                 })}
+            </div>
+            <div className="checkout">
+                <p>Subtotal: ${totalAmount}</p>
             </div>
         </div>
     )
