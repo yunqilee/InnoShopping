@@ -28,9 +28,13 @@ export const Cart = () => {
                     }
                 })}
             </div>
-            <div className="checkout">
-                <p>Subtotal: ${totalAmount}</p>
-            </div>
+            {totalAmount > 0 ? (
+                <div className="checkout">
+                    <p>Subtotal: ${totalAmount}</p>
+                </div>
+            ) : (
+                <h3>Your Shopping Cart is Empty</h3>
+            )}
         </div>
     )
 }
