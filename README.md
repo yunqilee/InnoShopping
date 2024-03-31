@@ -9,3 +9,7 @@ run the command:
 `npm i && npm start`
 
 you are good to go.
+
+## Implemented functions
+
+Show a list of purchasable products
