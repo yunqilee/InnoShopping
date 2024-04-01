@@ -31,3 +31,31 @@
     margin-left: 20px;
     font-size: 25px;
 }
+
+.search-form {
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+}
+
+.search-form .search-input {
+    padding: 8px 12px;
+    border: 2px solid white;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    border-radius: 20px;
+    margin-right: 10px;
+    outline: none;
+}
+
+.search-form button {
+    padding: 8px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.search-form svg {
+    color: white;
+}
