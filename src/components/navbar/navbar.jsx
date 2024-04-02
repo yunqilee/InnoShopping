@@ -1,10 +1,11 @@
-import React, {useState} from "react";
+import React from "react";
 import {Link} from "react-router-dom";
 import {ShoppingBag, ShoppingCart, MagnifyingGlass} from "phosphor-react";
+import {useSearch} from "../context/SearchContext";
 import "./navbar.css"
 
 export const Navbar = () => {
-    const [searchTerm, setSearchTerm] = useState('');
+    const {searchTerm, setSearchTerm} = useSearch();
 
     const handleSearch = (event) => {
         event.preventDefault();

@@ -1,19 +1,32 @@
 import React, {useContext, useEffect, useState} from "react";
 import {Product} from "./Product";
 import {ShopContext} from "../context/ShopContext";
+import {useSearch} from "../context/SearchContext";
 import "./Product.css"
 export const ProductList = () => {
-
     const [products, setProducts] = useState([])
+    const {searchTerm} = useSearch();
     const {cartItems, addToCart} = useContext(ShopContext)
 
 
     useEffect(() => {
-        fetch('https://dummyjson.com/products')
-            .then(response => response.json())
-            .then(data => setProducts(data.products))
-            .catch(error => console.error('Error fetching data: ', error));
-    }, []);
+        const fetchProducts = async () => {
+            let url = 'https://dummyjson.com/products'
+            if (searchTerm.trim().length > 0) {
+                url = `https://dummyjson.com/products/search?q=${searchTerm}`;
+            }
+
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+                setProducts(data.products || data);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        }
+
+        fetchProducts();
+    }, [searchTerm]);
 
     return (
         <div className="product">
