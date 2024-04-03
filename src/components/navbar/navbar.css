@@ -1,7 +1,16 @@
 .navbar {
     width: 100%;
-    height: 80px;
+    height: 90px;
     background-color: rgb(19, 19, 19);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px 0;
+}
+
+.navbar-top {
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -58,4 +67,19 @@
 
 .search-form svg {
     color: white;
+}
+
+.categories {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    width: 100%;
+    scrollbar-width: auto;
+}
+
+.category-link {
+    margin: 0 10px;
+    text-decoration: none;
+    color: white;
+    font-size: 12px;
 }
