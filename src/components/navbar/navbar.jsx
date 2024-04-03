@@ -15,7 +15,6 @@ export const Navbar = () => {
     }
 
     const handleCategorySelect = (category) => {
-        console.log(category)
         setSelectedCategory(category);
     }
 

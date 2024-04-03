@@ -5,7 +5,7 @@ import {useSearch} from "../context/SearchContext";
 import "./Product.css"
 export const ProductList = () => {
     const [products, setProducts] = useState([])
-    const {searchTerm} = useSearch();
+    const {searchTerm, selectedCategory} = useSearch();
     const {cartItems, addToCart} = useContext(ShopContext)
 
 
@@ -13,7 +13,9 @@ export const ProductList = () => {
         const fetchProducts = async () => {
             let url = 'https://dummyjson.com/products'
             if (searchTerm.trim().length > 0) {
-                url = `https://dummyjson.com/products/search?q=${searchTerm}`;
+                url += `/search?q=${searchTerm}`;
+            } else if (selectedCategory) {
+                url += `/category/${selectedCategory}`;
             }
 
             try {
@@ -26,7 +28,7 @@ export const ProductList = () => {
         }
 
         fetchProducts();
-    }, [searchTerm]);
+    }, [searchTerm, selectedCategory]);
 
     return (
         <div className="product">
