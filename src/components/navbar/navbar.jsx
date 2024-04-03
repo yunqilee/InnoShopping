@@ -9,6 +9,10 @@ export const Navbar = () => {
     const [categories, setCategories] = useState([]);
     const location = useLocation();
 
+    const handleLogoClick = () => {
+        setSelectedCategory('');
+    }
+
     const handleSearch = (event) => {
         event.preventDefault();
         console.log('Search Term:', searchTerm)
@@ -27,7 +31,7 @@ export const Navbar = () => {
 
     return <div className="navbar">
         <div className="navbar-top">
-            <Link to={"/"} className="logo-link">
+            <Link to={"/"} onClick={handleLogoClick} className="logo-link">
                 <h1 className="logo">InnoShopping</h1>
             </Link>
             <div className="links">
