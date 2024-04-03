@@ -5,7 +5,7 @@ import {useSearch} from "../context/SearchContext";
 import "./navbar.css"
 
 export const Navbar = () => {
-    const {searchTerm, setSearchTerm} = useSearch();
+    const {searchTerm, setSearchTerm, setSelectedCategory} = useSearch();
     const [categories, setCategories] = useState([]);
     const location = useLocation();
 
@@ -14,8 +14,12 @@ export const Navbar = () => {
         console.log('Search Term:', searchTerm)
     }
 
+    const handleCategorySelect = (category) => {
+        console.log(category)
+        setSelectedCategory(category);
+    }
+
     useEffect(() => {
-        // 获取商品种类信息
         fetch('https://dummyjson.com/products/categories')
             .then(response => response.json())
             .then(data => setCategories(data))
@@ -51,7 +55,7 @@ export const Navbar = () => {
         {location.pathname !== '/cart' && (
             <div className="categories">
                 {categories.map((category, index) => (
-                    <button key={index} className="category-link">
+                    <button key={index} onClick={() => handleCategorySelect(category)} className="category-link">
                         {category}
                     </button>
                 ))}
