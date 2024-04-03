@@ -72,8 +72,10 @@
 .categories {
     display: flex;
     overflow-x: auto;
+    overflow-y: hidden;
     white-space: nowrap;
     width: 100%;
+    height: auto;
     scrollbar-width: auto;
 }
 
