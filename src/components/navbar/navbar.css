@@ -75,13 +75,28 @@
     overflow-y: hidden;
     white-space: nowrap;
     width: 100%;
-    height: auto;
-    scrollbar-width: auto;
+    height: 50px;
+    line-height: 1.5;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.categories::-webkit-scrollbar {
+    display: none;
 }
 
 .category-link {
-    margin: 0 10px;
+    background-color: transparent;
+    border: none;
+    margin: 0 5px;
     text-decoration: none;
     color: white;
     font-size: 12px;
+    cursor: pointer;
+    display: inline;
+}
+
+.category-link:hover, .category-link:focus {
+    color: #ccc;
+    outline: none;
 }

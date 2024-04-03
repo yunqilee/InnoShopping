@@ -51,9 +51,9 @@ export const Navbar = () => {
         {location.pathname !== '/cart' && (
             <div className="categories">
                 {categories.map((category, index) => (
-                    <Link key={index} to={`/category/${category}`} className="category-link">
+                    <button key={index} className="category-link">
                         {category}
-                    </Link>
+                    </button>
                 ))}
             </div>
         )}
