@@ -18,23 +18,26 @@ export const Cart = () => {
 
     return (
         <div className="cart">
+            {totalAmount > 0 ? (
+                <div className="checkout-info">
+                    <p>Subtotal: ${totalAmount}</p>
+                    <button>Checkout</button>
+                </div>
+            ) : (
+                <h3>Your Shopping Cart is Empty</h3>
+            )}
             <div>
                 <h3>Your Cart Items</h3>
             </div>
             <div className="cart">
                 {products.map((product) => {
                     if (cartItems[product.id] !== 0) {
-                        return <CartItem data={product} />
+                        return <CartItem key={product.id} data={product} />
+                    } else {
+                        return null;
                     }
                 })}
             </div>
-            {totalAmount > 0 ? (
-                <div className="checkout">
-                    <p>Subtotal: ${totalAmount}</p>
-                </div>
-            ) : (
-                <h3>Your Shopping Cart is Empty</h3>
-            )}
         </div>
     )
 }
