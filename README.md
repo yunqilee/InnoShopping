@@ -1,7 +1,8 @@
 # InnoShopping
-A React project combined with dummyJSON, 
-the interaction with data is implemented by 
-[dummy API](https://dummyjson.com/docs)
+A MERN stack e-commerce website, currently the interaction with data
+is implemented by [dummy API](https://dummyjson.com/docs)
+
+The owner of this repository is now working on the server side code.
 
 ## Start the project
 make sure you installed Node.js on your machine 
