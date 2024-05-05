@@ -3,6 +3,7 @@ A MERN stack e-commerce website, currently the interaction with data
 is implemented by [dummy API](https://dummyjson.com/docs)
 
 The owner of this repository is now working on the server side code.
+The data will be stored in MongoDB hosted by Azure.
 
 ## Start the project
 make sure you installed Node.js on your machine 
