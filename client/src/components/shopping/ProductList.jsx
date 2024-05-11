@@ -1,7 +1,7 @@
 import React, {useContext, useEffect, useState} from "react";
 import {Product} from "./Product";
-import {ShopContext} from "../context/ShopContext";
-import {useSearch} from "../context/SearchContext";
+import {ShopContext} from "../../context/ShopContext";
+import {useSearch} from "../../context/SearchContext";
 import "./Product.css"
 export const ProductList = () => {
     const [products, setProducts] = useState([])

@@ -3,8 +3,8 @@ import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import {Navbar} from "./components/navbar/navbar";
 import {Cart} from "./components/cart/Cart";
 import {ProductList} from "./components/shopping/ProductList";
-import {ShopContextProvider} from "./components/context/ShopContext";
-import {SearchProvider} from "./components/context/SearchContext";
+import {ShopContextProvider} from "./context/ShopContext";
+import {SearchProvider} from "./context/SearchContext";
 
 function App() {
   return (

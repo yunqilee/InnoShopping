@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import {Link, useLocation} from "react-router-dom";
-import {ShoppingBag, ShoppingCart, MagnifyingGlass} from "phosphor-react";
-import {useSearch} from "../context/SearchContext";
+import {ShoppingBag, ShoppingCart, MagnifyingGlass, UserCircle} from "phosphor-react";
+import {useSearch} from "../../context/SearchContext";
 import "./navbar.css"
 
 export const Navbar = () => {
@@ -47,6 +47,9 @@ export const Navbar = () => {
                         <MagnifyingGlass size={24}/>
                     </button>
                 </form>
+                <Link to={"/"}>
+                    <UserCircle size={24}/>
+                </Link>
                 <Link to={"/"}>
                     <ShoppingBag size={24}/>
                 </Link>
