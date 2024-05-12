@@ -47,7 +47,7 @@ export const Navbar = () => {
                         <MagnifyingGlass size={24}/>
                     </button>
                 </form>
-                <Link to={"/"}>
+                <Link to={"/auth"}>
                     <UserCircle size={24}/>
                 </Link>
                 <Link to={"/"}>
