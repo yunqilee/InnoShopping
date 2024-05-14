@@ -1,4 +1,5 @@
 import {useState} from "react";
+import {Link} from "react-router-dom";
 import "./auth.css"
 
 export const Auth = () => {
@@ -43,6 +44,9 @@ const Login = () => {
                     <button className="auth-button" type="submit">Login</button>
                 </div>
             </form>
+            <p className="register-link">
+                Don't have an account yet? <Link to="/register">Click here to register.</Link>
+            </p>
         </div>
     )
 }
