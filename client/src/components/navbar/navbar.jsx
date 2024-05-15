@@ -58,7 +58,7 @@ export const Navbar = () => {
                 </Link>
             </div>
         </div>
-        {location.pathname !== '/cart' && location.pathname !== '/auth' && (
+        {location.pathname !== '/cart' && location.pathname !== '/auth' && location.pathname !== '/register' && (
             <div className="categories">
                 {categories.map((category, index) => (
                     <button key={index} onClick={() => handleCategorySelect(category)} className="category-link">
