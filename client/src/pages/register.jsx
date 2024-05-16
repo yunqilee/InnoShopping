@@ -1,12 +1,18 @@
 import {useState} from "react";
+import axios from "axios";
 import "./auth.css"
 
 export const Register = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
+        await axios.post("http://localhost:3001/user/register", {
+            username,
+            password,
+        });
+        alert("Register successfully!");
     }
     return (
         <div className="auth">
