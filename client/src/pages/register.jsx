@@ -1,4 +1,5 @@
 import {useState} from "react";
+import {useNavigate} from "react-router-dom";
 import axios from "axios";
 import {UserErrors} from "../models/errors";
 import "./auth.css"
@@ -6,6 +7,8 @@ import "./auth.css"
 export const Register = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -15,6 +18,7 @@ export const Register = () => {
                 password,
             });
             alert("Register successfully!");
+            navigate("/auth");
         } catch (err) {
             if (err.response.data.type === UserErrors.USERNAME_ALREADY_EXISTS) {
                 alert("User already exists!");
