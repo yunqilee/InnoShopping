@@ -1,5 +1,6 @@
 import {useState} from "react";
 import axios from "axios";
+import {UserErrors} from "../models/errors";
 import "./auth.css"
 
 export const Register = () => {
@@ -8,11 +9,19 @@ export const Register = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await axios.post("http://localhost:3001/user/register", {
-            username,
-            password,
-        });
-        alert("Register successfully!");
+        try {
+            await axios.post("http://localhost:3001/user/register", {
+                username,
+                password,
+            });
+            alert("Register successfully!");
+        } catch (err) {
+            if (err.response.data.type === UserErrors.USERNAME_ALREADY_EXISTS) {
+                alert("User already exists!");
+            } else {
+                alert("Something went wrong!");
+            }
+        }
     }
     return (
         <div className="auth">
