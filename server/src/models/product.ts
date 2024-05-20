@@ -5,7 +5,7 @@ export interface Iproduct {
     price: number;
     thumbnail: string;
     description: string;
-    stockQuantity: number;
+    stock: number;
 }
 
 const ProductSchema = new Schema<Iproduct>({
@@ -13,7 +13,7 @@ const ProductSchema = new Schema<Iproduct>({
     price: { type: Number, required: true, min: [0.99, "Price should be above 0.99"] },
     thumbnail: { type: String, required: true },
     description: { type: String, required: true },
-    stockQuantity: { type: Number, required: true, min: [0, "Stock can't be lower than 0"] },
+    stock: { type: Number, required: true, min: [0, "Stock can't be lower than 0"] },
 })
 
 export const ProductModel = model<Iproduct>('product', ProductSchema)
