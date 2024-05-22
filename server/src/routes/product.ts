@@ -18,7 +18,7 @@ router.get('/', async (_, res: Response) => {
 router.post('/checkout', verifyToken, async (req: Request, res: Response) => {
     const {customerID, cartItems} = req.body;
     try {
-        const user = await UserModel.findById({customerID});
+        const user = await UserModel.findById(customerID);
         const productIDs = Object.keys(cartItems);
         const products = await ProductModel.find({_id: {$in: productIDs}});
 
@@ -50,6 +50,13 @@ router.post('/checkout', verifyToken, async (req: Request, res: Response) => {
         }
 
         user.balance -= subTotal
+        user.purchasedItems.push(...productIDs)
+
+        user.save()
+        await ProductModel.updateMany({_id: {$in: productIDs}}, {$inc: {stock: -1}})
+
+        res.json({purchasedItems: user.purchasedItems})
+
     } catch (err) {
         res.status(400).json({error: err})
     }
