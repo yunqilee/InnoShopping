@@ -10,7 +10,7 @@ export const Cart = () => {
     const totalAmount = getTotalCartAmount();
 
     useEffect(() => {
-        fetch('https://dummyjson.com/products')
+        fetch('http://localhost:3001/product')
             .then(response => response.json())
             .then(data => setProducts(data.products))
             .catch(error => console.error('Error fetching data: ', error));
@@ -31,8 +31,8 @@ export const Cart = () => {
             </div>
             <div className="cart">
                 {products.map((product) => {
-                    if (cartItems[product.id] !== 0) {
-                        return <CartItem key={product.id} data={product} />
+                    if (cartItems[product._id] !== 0) {
+                        return <CartItem key={product._id} data={product} />
                     } else {
                         return null;
                     }

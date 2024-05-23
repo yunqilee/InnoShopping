@@ -11,7 +11,7 @@ export const ProductList = () => {
 
     useEffect(() => {
         const fetchProducts = async () => {
-            let url = 'https://dummyjson.com/products'
+            let url = 'http://localhost:3001/product'
             if (searchTerm.trim().length > 0) {
                 url += `/search?q=${searchTerm}`;
             } else if (selectedCategory) {
@@ -35,10 +35,10 @@ export const ProductList = () => {
             <div className="container grid3">
                 {products.map(product => (
                     <Product
-                        key={product.id}
+                        key={product._id}
                         product={product}
                         addToCart={addToCart}
-                        cartItemsCount={cartItems[product.id] || 0}
+                        cartItemsCount={cartItems[product._id] || 0}
                     />
                 ))}
             </div>

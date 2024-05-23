@@ -9,11 +9,11 @@ export const ShopContextProvider = (props) => {
     useEffect(() => {
         const fetchProductsAndInitializeCart = async () => {
             try {
-                const response = await fetch('https://dummyjson.com/products');
+                const response = await fetch('http://localhost:3001/product');
                 const data = await response.json();
                 const initialCart = {};
                 data.products.forEach(product => {
-                    initialCart[product.id] = 0;
+                    initialCart[product._id] = 0;
                 });
                 setCartItems(initialCart);
                 setProducts(data.products);
@@ -27,16 +27,19 @@ export const ShopContextProvider = (props) => {
 
 
     const getTotalCartAmount = () => {
+        if (products.length === 0) return 0;
         let totalAmount = 0;
-        Object.keys(cartItems).forEach(itemId => {
-            const quantity = cartItems[itemId];
-            if (quantity > 0) {
-                const itemInfo = products.find(product => product.id === Number(itemId));
-                if (itemInfo) {
-                    totalAmount += quantity * itemInfo.price;
-                }
+
+        for (const item in cartItems) {
+            if (cartItems[item] > 0) {
+                let itemInfo = products.find(
+                    (product) => product._id === item
+                )
+
+                totalAmount += cartItems[item] * itemInfo.price
             }
-        });
+        }
+
         return totalAmount;
     };
 

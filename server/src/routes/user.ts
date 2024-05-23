@@ -56,9 +56,10 @@ export const verifyToken = (req: Request, res: Response, next: NextFunction) => 
 
             next();
         })
+    } else {
+        res.status(401).json({error: authorization})
     }
 
-    res.status(401).json({error: authorization})
 }
 
 export {router as userRouter};
