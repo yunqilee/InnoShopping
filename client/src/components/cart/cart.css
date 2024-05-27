@@ -17,8 +17,11 @@
 }
 
 .cartItem img {
-    width: 200px;
+    width: 40%;
     height: 80%;
+    margin: 5px;
+    border-radius: 10%;
+    object-fit: cover;
 }
 
 .cartItem .description {
