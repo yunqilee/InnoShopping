@@ -4,10 +4,10 @@ import {ShopContext} from "../../context/ShopContext";
 
 export const CartItem = (props) => {
     const { _id, title, price, thumbnail, description } = props.data;
-    const {cartItems, addToCart, removeFromCart, updateCartItemCount} = useContext(ShopContext);
+    const {getCartItemCount, addToCart, removeFromCart, updateCartItemCount} = useContext(ShopContext);
 
     const handleBlur = () => {
-        const currentAmount = cartItems[_id];
+        const currentAmount = getCartItemCount(_id);
         if (isNaN(currentAmount) || currentAmount < 1) {
             updateCartItemCount(1, _id);
         }
@@ -25,7 +25,7 @@ export const CartItem = (props) => {
             <div className="countHandler">
                 <button onClick={() => removeFromCart(_id)}>-</button>
                 <input
-                    value={cartItems[_id]}
+                    value={getCartItemCount(_id)}
                     onChange={(e) => updateCartItemCount(e.target.value, _id)}
                     onBlur={handleBlur}
                 />

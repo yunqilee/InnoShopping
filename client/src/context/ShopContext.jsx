@@ -1,28 +1,22 @@
 import {createContext, useState, useEffect} from "react";
+import {useGetProducts} from "../hooks/useGetProducts";
 
 export const ShopContext = createContext(null);
 
 export const ShopContextProvider = (props) => {
     const [cartItems, setCartItems] = useState({});
-    const [products, setProducts] = useState([]);
+    const { products} = useGetProducts();
 
     useEffect(() => {
-        const fetchProductsAndInitializeCart = async () => {
-            try {
-                const response = await fetch('http://localhost:3001/product');
-                const data = await response.json();
-                const initialCart = {};
-                data.products.forEach(product => {
-                    initialCart[product._id] = 0;
-                });
-                setCartItems(initialCart);
-                setProducts(data.products);
-            } catch (error) {
-                console.error("Failed to fetch products:", error);
-            }
+        const initializeCart = async () => {
+            const initialCart = {};
+            products.forEach(product => {
+                initialCart[product._id] = 0;
+            });
+            setCartItems(initialCart);
         };
 
-        fetchProductsAndInitializeCart();
+        initializeCart();
     }, []);
 
 
@@ -72,7 +66,8 @@ export const ShopContextProvider = (props) => {
     };
 
     console.log(cartItems)
-    const contextValue = {cartItems, getCartItemCount, addToCart, removeFromCart, updateCartItemCount, getTotalCartAmount}
+
+    const contextValue = {getCartItemCount, addToCart, removeFromCart, updateCartItemCount, getTotalCartAmount}
 
     return (
         <ShopContext.Provider value={contextValue}>

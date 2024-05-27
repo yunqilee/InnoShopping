@@ -1,20 +1,13 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, {useContext} from "react";
 import {ShopContext} from "../../context/ShopContext";
 import {CartItem} from "./CartItem";
 import "./cart.css"
-
+import {useGetProducts} from "../../hooks/useGetProducts";
 
 export const Cart = () => {
-    const [products, setProducts] = useState([])
-    const {cartItems, getTotalCartAmount} = useContext(ShopContext);
+    const {getCartItemCount, getTotalCartAmount} = useContext(ShopContext);
     const totalAmount = getTotalCartAmount();
-
-    useEffect(() => {
-        fetch('http://localhost:3001/product')
-            .then(response => response.json())
-            .then(data => setProducts(data.products))
-            .catch(error => console.error('Error fetching data: ', error));
-    }, []);
+    const {products} = useGetProducts();
 
     return (
         <div className="cart">
@@ -31,7 +24,7 @@ export const Cart = () => {
             </div>
             <div className="cart">
                 {products.map((product) => {
-                    if (cartItems[product._id] !== 0) {
+                    if (getCartItemCount(product._id) !== 0) {
                         return <CartItem key={product._id} data={product} />
                     } else {
                         return null;
