@@ -8,7 +8,7 @@ export const ShopContextProvider = (props) => {
     const { products} = useGetProducts();
 
     useEffect(() => {
-        const initializeCart = async () => {
+        const initializeCart = () => {
             const initialCart = {};
             products.forEach(product => {
                 initialCart[product._id] = 0;
