@@ -11,13 +11,14 @@ export const ShopContextProvider = (props) => {
         const initializeCart = () => {
             const initialCart = {};
             products.forEach(product => {
+                console.log(product._id)
                 initialCart[product._id] = 0;
-            });
+            })
             setCartItems(initialCart);
         };
 
         initializeCart();
-    }, []);
+    }, [products]);
 
 
     const getCartItemCount = (itemId) => {
