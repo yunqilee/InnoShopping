@@ -68,6 +68,9 @@
 }
 
 .checkout-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     position: fixed;
     top: 130px;
     right: 20px;
@@ -81,6 +84,7 @@
 }
 
 .checkout-info button {
+    margin: 10px 0;
     width: 150px;
     height: 50px;
     background-color: rgb(19, 19, 19);
