@@ -11,9 +11,9 @@ import {SearchProvider} from "./context/SearchContext";
 function App() {
   return (
     <div className="App">
-        <SearchProvider>
-            <ShopContextProvider>
-                <Router>
+        <Router>
+            <SearchProvider>
+                <ShopContextProvider>
                     <Navbar />
                     <Routes>
                         <Route path={"/"} element={<ProductList />}></Route>
@@ -21,9 +21,9 @@ function App() {
                         <Route path={"/register"} element={<Register />}></Route>
                         <Route path={"/cart"} element={<Cart />}></Route>
                     </Routes>
-                </Router>
-            </ShopContextProvider>
-        </SearchProvider>
+                </ShopContextProvider>
+            </SearchProvider>
+        </Router>
     </div>
   );
 }

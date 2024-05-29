@@ -1,11 +1,16 @@
 import {createContext, useState, useEffect} from "react";
 import {useGetProducts} from "../hooks/useGetProducts";
+import axios from "axios";
+import {useNavigate} from "react-router-dom";
+import {useGetToken} from "../hooks/useGetToken";
 
 export const ShopContext = createContext(null);
 
 export const ShopContextProvider = (props) => {
     const [cartItems, setCartItems] = useState({});
     const { products} = useGetProducts();
+    const {headers} = useGetToken();
+    const navigate = useNavigate();
 
     useEffect(() => {
         const initializeCart = () => {
@@ -65,6 +70,21 @@ export const ShopContextProvider = (props) => {
             }));
         }
     };
+
+    const checkout = async () => {
+        const body = {customerID: localStorage.getItem("userID", cartItems)};
+        try {
+            const response = await axios.post("http://localhost:3001/products/checkout",
+                body,
+                {headers}
+            );
+
+            navigate("/");
+
+        } catch (err) {
+            console.log(err);
+        }
+    }
 
     console.log(cartItems)
 
