@@ -72,9 +72,9 @@ export const ShopContextProvider = (props) => {
     };
 
     const checkout = async () => {
-        const body = {customerID: localStorage.getItem("userID", cartItems)};
+        const body = {customerID: localStorage.getItem("userID"), cartItems};
         try {
-            const response = await axios.post("http://localhost:3001/products/checkout",
+            const response = await axios.post("http://localhost:3001/product/checkout",
                 body,
                 {headers}
             );
@@ -88,7 +88,7 @@ export const ShopContextProvider = (props) => {
 
     console.log(cartItems)
 
-    const contextValue = {getCartItemCount, addToCart, removeFromCart, updateCartItemCount, getTotalCartAmount}
+    const contextValue = {getCartItemCount, addToCart, removeFromCart, updateCartItemCount, getTotalCartAmount, checkout}
 
     return (
         <ShopContext.Provider value={contextValue}>

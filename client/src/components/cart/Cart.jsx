@@ -7,7 +7,7 @@ import "./cart.css"
 
 
 export const Cart = () => {
-    const {getCartItemCount, getTotalCartAmount} = useContext(ShopContext);
+    const {getCartItemCount, getTotalCartAmount, checkout} = useContext(ShopContext);
     const totalAmount = getTotalCartAmount();
     const {products} = useGetProducts();
     const navigate = useNavigate();
@@ -18,7 +18,9 @@ export const Cart = () => {
                 <div className="checkout-info">
                     <p>Subtotal: ${totalAmount}</p>
                     <button onClick={() => navigate("/")}>Continue Shopping</button>
-                    <button>Checkout</button>
+                    <button onClick={() => {
+                        checkout(localStorage.getItem("userID"))
+                    }}>Checkout</button>
                 </div>
             ) : (
                 <h3>Your Shopping Cart is Empty</h3>
