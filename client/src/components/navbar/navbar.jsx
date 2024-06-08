@@ -1,10 +1,12 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useContext} from "react";
 import {Link, useLocation} from "react-router-dom";
 import {ShoppingBag, ShoppingCart, MagnifyingGlass, UserCircle} from "phosphor-react";
 import {useSearch} from "../../context/SearchContext";
 import "./navbar.css"
+import {ShopContext} from "../../context/ShopContext";
 
 export const Navbar = () => {
+    const {balance} = useContext(ShopContext);
     const {searchTerm, setSearchTerm, setSelectedCategory} = useSearch();
     const [categories, setCategories] = useState([]);
     const location = useLocation();
@@ -56,6 +58,7 @@ export const Navbar = () => {
                 <Link to={"/cart"}>
                     <ShoppingCart size={24}/>
                 </Link>
+                <span> Balance: ${balance} </span>
             </div>
         </div>
         {location.pathname !== '/cart' && location.pathname !== '/auth' && location.pathname !== '/register' && (

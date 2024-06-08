@@ -14,7 +14,7 @@ export const ShopContextProvider = (props) => {
     const navigate = useNavigate();
 
     const getBalance = async () => {
-        const resp = await axios.get(`http://localhost:3001/get-balance/${localStorage.getItem("userID")}`,
+        const resp = await axios.get(`http://localhost:3001/user/get-balance/${localStorage.getItem("userID")}`,
             {headers})
         setBalance(resp.data.balance)
     }
@@ -32,6 +32,10 @@ export const ShopContextProvider = (props) => {
         initializeCart();
     }, [products]);
 
+
+    useEffect(() => {
+        getBalance()
+    }, [])
 
     const getCartItemCount = (itemId) => {
         if (itemId in cartItems) {

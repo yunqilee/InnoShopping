@@ -69,6 +69,13 @@
     color: white;
 }
 
+span {
+    margin-left: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+}
+
 .categories {
     display: flex;
     overflow-x: auto;
