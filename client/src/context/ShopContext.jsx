@@ -8,9 +8,16 @@ export const ShopContext = createContext(null);
 
 export const ShopContextProvider = (props) => {
     const [cartItems, setCartItems] = useState({});
+    const [balance, setBalance] = useState(0);
     const { products} = useGetProducts();
     const {headers} = useGetToken();
     const navigate = useNavigate();
+
+    const getBalance = async () => {
+        const resp = await axios.get(`http://localhost:3001/get-balance/${localStorage.getItem("userID")}`,
+            {headers})
+        setBalance(resp.data.balance)
+    }
 
     useEffect(() => {
         const initializeCart = () => {
@@ -88,7 +95,7 @@ export const ShopContextProvider = (props) => {
 
     console.log(cartItems)
 
-    const contextValue = {getCartItemCount, addToCart, removeFromCart, updateCartItemCount, getTotalCartAmount, checkout}
+    const contextValue = {getCartItemCount, addToCart, removeFromCart, updateCartItemCount, getTotalCartAmount, checkout, balance}
 
     return (
         <ShopContext.Provider value={contextValue}>
