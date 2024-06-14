@@ -90,6 +90,8 @@ export const ShopContextProvider = (props) => {
                 {headers}
             );
 
+            setCartItems({});
+            getBalance();
             navigate("/");
 
         } catch (err) {
